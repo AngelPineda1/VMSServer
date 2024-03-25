@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VMSServer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:vm="clr-namespace:VMSServer.ViewModels"
+        xmlns:views="clr-namespace:VMSServer.Views" Background="Black">
+    <Window.DataContext>
+        <vm:MensajeViewModel></vm:MensajeViewModel>
+    </Window.DataContext>
+    <views:VMSView></views:VMSView>
 </Window>
