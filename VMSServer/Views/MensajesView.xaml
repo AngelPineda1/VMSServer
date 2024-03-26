@@ -6,7 +6,14 @@
              xmlns:local="clr-namespace:VMSServer.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel >
+    <!--<StackPanel >
         <TextBlock Text="{Binding MensajeVMS}" TextAlignment="Center" FontWeight="Bold" FontSize="12" Height="20" Foreground="White" ></TextBlock>
-    </StackPanel>
+    </StackPanel>-->
+    <Border BorderBrush="Gray" BorderThickness="1" Background="#1E1E1E">
+        <TextBlock Text="{Binding MensajeVMS}" TextAlignment="Center" FontSize="24" Foreground="#FFA500" Margin="5">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FFA500" BlurRadius="10"/>
+            </TextBlock.Effect>
+        </TextBlock>
+    </Border>
 </UserControl>
