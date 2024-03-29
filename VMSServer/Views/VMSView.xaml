@@ -11,12 +11,35 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Row for buttons -->
         </Grid.RowDefinitions>
-         <!-- Cabecera -->
+        <!-- Cabecera -->
         <StackPanel Grid.Row="0" Background="#333333">
             <TextBlock Text="VMS" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
             <TextBlock Text="{Binding IP, Mode=OneWay}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Width="255" />
         </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:MensajesView></local:MensajesView>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <!-- Botones -->
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Anterior" Margin="5"/>
+            <Button Content="Siguiente" Margin="5"/>
+        </StackPanel>
+    </Grid>
+
     <!--<DockPanel>
         <TextBlock Text="VMS  Ip: " FontSize="30" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="5" FontFamily="Monocraft"><Run Text="{Binding IP,Mode=OneWay}"></Run></TextBlock>-->
         <!--<ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">
@@ -32,20 +55,5 @@
             </ItemsControl.ItemTemplate>
             
         </ItemsControl>-->
-    <ScrollViewer Grid.Row="1">
-        <ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel></StackPanel>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <local:MensajesView></local:MensajesView>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </ScrollViewer>
     <!--</DockPanel>-->
-    </Grid>
 </UserControl>
