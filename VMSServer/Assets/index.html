@@ -86,6 +86,17 @@
         <textarea name="mensaje" placeholder="Escribe tu mensaje"></textarea>
         <input type="submit" value="Enviar Mensaje" />
     </form>
+    <script>
+      document
+        .getElementById("messageForm")
+        .addEventListener("submit", function (event) {
+          var mensaje = document.getElementById("mensajeTextArea").value;
+          if (mensaje.length > 300) {
+            event.preventDefault();
+            alert("El mensaje no puede exceder los 300 caracteres.");
+          }
+        });
+    </script>
 </body>
 </html>
 <!--<!DOCTYPE html>

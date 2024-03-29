@@ -8,10 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800"
             >
     <UserControl.Resources>
-        <Style TargetType="local:MensajesView" x:Key="FuenteMensaje">
-            <!-- Establecer el tipo de letra personalizado -->
+        <!--<Style TargetType="local:MensajesView" x:Key="FuenteMensaje">
+            --><!-- Establecer el tipo de letra personalizado --><!--
             <Setter Property="FontFamily" Value="DS-DGI.TTF"/>
-        </Style>
+        </Style>-->
         <Style x:Key="CurvedButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Orange"/>
             <Setter Property="Foreground" Value="Black"/>
@@ -46,10 +46,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Background="#333333">
-            <TextBlock Text="VMS" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBlock  Text="VMS" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
             <TextBlock Text="{Binding IP, Mode=OneWay}" TextAlignment="Center" FontSize="20" Foreground="White" HorizontalAlignment="Center" Width="202" />
         </StackPanel>
-        <local:MensajesView Grid.Row="1" Style="{StaticResource FuenteMensaje}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="224"></local:MensajesView>
+        <local:MensajesView Grid.Row="1" FontFamily="DS-DIGI.TTF" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="224"></local:MensajesView>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
             <Button Content="Anterior" Style="{StaticResource CurvedButtonStyle}" Command="{Binding AnteriorCommand}" Width="80" Height="40"/>
             <Button Content="Siguiente" Style="{StaticResource CurvedButtonStyle}" Command="{Binding SiguienteCommand}" Width="80" Height="40"/>
