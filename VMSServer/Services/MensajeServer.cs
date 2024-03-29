@@ -32,13 +32,15 @@ namespace VMSServer.Services
                 new Thread(Escuchar) { IsBackground = true }.Start();
             }
         }
+ 
         public event EventHandler<Mensaje>? MensajeRecicibido;
         private void Escuchar()
         {
+          
             while (true)
             {
                 var context = server.GetContext();
-                var pagina = File.ReadAllText("C:\\Users\\BROCOTECH\\Documents\\Cliente Servidor\\Unidad 2\\VMSServer\\VMSServer\\Assets//index.html");
+                var pagina = File.ReadAllText("Assets/index.html");
                 var bufferpagina = Encoding.UTF8.GetBytes(pagina);
                 if (context.Request.Url != null)
                 {

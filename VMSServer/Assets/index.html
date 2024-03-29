@@ -1,6 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enviar Mensajes a Pantalla WPF</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes lightPass {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 165, 0, 0);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(255, 165, 0, 0.9);
+            }
+
+            100% {
+                text-shadow: 0 0 20px rgba(255, 165, 0, 0);
+            }
+        }
+
+        h1 {
+            color: orange;
+            text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+            text-align: center;
+            font-size: 60px;
+            font-weight: bold;
+            animation: lightPass 2s infinite;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        textarea {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 2px solid orange;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            height: 150px;
+        }
+
+            textarea:focus {
+                outline: none;
+            }
+
+            textarea::placeholder {
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-image 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            width: calc(100% - 4px);
+        }
+
+            input[type="submit"]:hover {
+                background-image: linear-gradient(to right, #feb47b, #ff7e5f);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                transform: translateY(-2px);
+            }
+    </style>
+</head>
+<body>
+    <h1>Enviar Mensajes a Pantalla WPF</h1>
+    <form action="./enviar" method="POST">
+        <textarea name="mensaje" placeholder="Escribe tu mensaje"></textarea>
+        <input type="submit" value="Enviar Mensaje" />
+    </form>
+</body>
+</html>
+<!--<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar Mensajes a Pantalla WPF</title>
@@ -49,4 +139,4 @@
         <input type="submit" value="Enviar Mensaje"/>
     </form>
 </body>
-</html>
+</html>-->
