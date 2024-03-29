@@ -51,8 +51,8 @@
         </StackPanel>
         <local:MensajesView Grid.Row="1" Style="{StaticResource FuenteMensaje}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="224"></local:MensajesView>
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Anterior" Style="{StaticResource CurvedButtonStyle}" Command="{Binding AnteriorCommand}" Width="60" Height="20"/>
-            <Button Content="Siguiente" Style="{StaticResource CurvedButtonStyle}" Command="{Binding SiguienteCommand}" Width="60" Height="20"/>
+            <Button Content="Anterior" Style="{StaticResource CurvedButtonStyle}" Command="{Binding AnteriorCommand}" Width="80" Height="40"/>
+            <Button Content="Siguiente" Style="{StaticResource CurvedButtonStyle}" Command="{Binding SiguienteCommand}" Width="80" Height="40"/>
         </StackPanel>
     </Grid>
 

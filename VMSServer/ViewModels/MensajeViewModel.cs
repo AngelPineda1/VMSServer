@@ -38,10 +38,13 @@ namespace VMSServer.ViewModels
             server.Iniciar();
 
             Mensajes = server.CargarArchivo();
-            if(Mensajes != null)
+            if (Mensajes != null && Mensajes.Any())
             {
-
-                Mensaje = Mensajes.FirstOrDefault().MensajeVMS ;
+                Mensaje = Mensajes.FirstOrDefault()?.MensajeVMS;
+            }
+            else
+            {
+                Mensajes = new ObservableCollection<Mensaje>(); // Inicializa Mensajes con una nueva instancia vacía si es null
             }
             SiguienteCommand = new RelayCommand(Siguiente);
             AnteriorCommand = new RelayCommand(Anterior);

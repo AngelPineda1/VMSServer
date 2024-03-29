@@ -19,9 +19,12 @@ namespace VMSServer.Services
     public class MensajeServer
     {
         HttpListener server = new HttpListener();
-        string Archivo = "Mensajes.json";
+        string Archivo;
+       
+
         public MensajeServer()
         {
+            Archivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"..", "..", "..", "Assets", "Mensajes.json");
             server.Prefixes.Add("http://*:8001/mensaje/");
         }
         public void Iniciar()
