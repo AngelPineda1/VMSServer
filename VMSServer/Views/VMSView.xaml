@@ -19,7 +19,8 @@
             <TextBlock Text="VMS" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
             <TextBlock Text="{Binding IP, Mode=OneWay}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Width="255" />
         </StackPanel>
-        <ScrollViewer Grid.Row="1">
+        <local:MensajesView Grid.Row="1"></local:MensajesView>
+        <!--<ScrollViewer Grid.Row="1">
             <ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -32,11 +33,11 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </ScrollViewer>
+        </ScrollViewer>-->
         <!-- Botones -->
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Anterior" Margin="5"/>
-            <Button Content="Siguiente" Margin="5"/>
+            <Button Content="Anterior" Margin="5" Command="{Binding AnteriorCommand}"/>
+            <Button Content="Siguiente" Margin="5" Command="{Binding SiguienteCommand}"/>
         </StackPanel>
     </Grid>
 

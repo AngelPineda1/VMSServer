@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml.Schema;
 using VMSServer.Models;
 using VMSServer.Services;
@@ -15,9 +17,13 @@ namespace VMSServer.ViewModels
     public class MensajeViewModel:INotifyPropertyChanged
     {
         public ObservableCollection<Mensaje> Mensajes { get; set; }=new ObservableCollection<Mensaje>();
+        public string Mensaje {  get; set; }
+        public int Indice { get; set; } 
         public MensajeServer server = new();
+        public ICommand SiguienteCommand { get; set; }
+        public ICommand AnteriorCommand { get; set; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+
 
         public string IP
         {
@@ -32,6 +38,46 @@ namespace VMSServer.ViewModels
             server.Iniciar();
 
             Mensajes = server.CargarArchivo();
+            if(Mensajes != null)
+            {
+
+                Mensaje = Mensajes.FirstOrDefault().MensajeVMS ;
+            }
+            SiguienteCommand = new RelayCommand(Siguiente);
+            AnteriorCommand = new RelayCommand(Anterior);
+        }
+
+        private void Anterior()
+        {
+            Indice--;
+            if (Indice >= 0)
+            {
+                Mensaje = Mensajes[Indice].MensajeVMS;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+
+            }
+            else
+            {
+                Indice = Mensajes.Count-1;
+                Mensaje = Mensajes[Indice].MensajeVMS;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+            }
+        }
+
+        private void Siguiente()
+        {
+            Indice++;
+            if(Indice <Mensajes.Count)
+            {
+                Mensaje = Mensajes[Indice].MensajeVMS;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+            }
+            else
+            {
+                Indice = 0;
+                Mensaje = Mensajes[Indice].MensajeVMS;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+            }
         }
 
         private void Server_MensajeRecicibido(object? sender, Mensaje e)
@@ -39,7 +85,11 @@ namespace VMSServer.ViewModels
             if (e!=null)
             {
                 Mensajes.Add(e);
+                Mensaje = e.MensajeVMS;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+                Indice = Mensajes.Count - 1;
             }
         }
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
