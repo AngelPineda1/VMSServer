@@ -60,17 +60,26 @@ namespace VMSServer.Services
                         context.Request.InputStream.Read(bufferdata, 0, bufferdata.Length);
                         string datos = Encoding.UTF8.GetString(bufferdata);
                         var diccionario = HttpUtility.ParseQueryString(datos);
-                        Mensaje mensaje = new Mensaje()
+                        if (diccionario["mensaje"].Length > 300)
                         {
-                            MensajeVMS = diccionario["mensaje"] ?? ""
-                        };
-                        GuardarMensaje(mensaje);
-                        Application.Current.Dispatcher.Invoke(new Action(() =>
+                            MessageBox.Show("El mensaje es muy largo");
+                        }
+                        else
                         {
-                            MensajeRecicibido?.Invoke(this, mensaje);
-                        }));
-                        context.Response.StatusCode = 200;
-                        context.Response.Close();
+                            Mensaje mensaje = new Mensaje()
+                            {
+                                MensajeVMS = diccionario["mensaje"] ?? ""
+                            };
+
+                            GuardarMensaje(mensaje);
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                MensajeRecicibido?.Invoke(this, mensaje);
+                            }));
+                            context.Response.StatusCode = 200;
+                            context.Response.Close();
+
+                        }
                     }
                     else
                     {
