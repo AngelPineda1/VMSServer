@@ -7,19 +7,55 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
             >
-    <Grid Background="#EFEFEF">
+    <UserControl.Resources>
+        <Style TargetType="local:MensajesView" x:Key="FuenteMensaje">
+            <!-- Establecer el tipo de letra personalizado -->
+            <Setter Property="FontFamily" Value="DS-DGI.TTF"/>
+        </Style>
+        <Style x:Key="CurvedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="border" BorderThickness="0" Background="{TemplateBinding Background}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="DarkOrange"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#333333">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <!-- Row for buttons -->
         </Grid.RowDefinitions>
-        <!-- Cabecera -->
         <StackPanel Grid.Row="0" Background="#333333">
             <TextBlock Text="VMS" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding IP, Mode=OneWay}" FontSize="20" Foreground="White" HorizontalAlignment="Center" Width="255" />
+            <TextBlock Text="{Binding IP, Mode=OneWay}" TextAlignment="Center" FontSize="20" Foreground="White" HorizontalAlignment="Center" Width="202" />
         </StackPanel>
-        <local:MensajesView Grid.Row="1"></local:MensajesView>
+        <local:MensajesView Grid.Row="1" Style="{StaticResource FuenteMensaje}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780" Height="224"></local:MensajesView>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Content="Anterior" Style="{StaticResource CurvedButtonStyle}" Command="{Binding AnteriorCommand}" Width="60" Height="20"/>
+            <Button Content="Siguiente" Style="{StaticResource CurvedButtonStyle}" Command="{Binding SiguienteCommand}" Width="60" Height="20"/>
+        </StackPanel>
+    </Grid>
+
         <!--<ScrollViewer Grid.Row="1">
             <ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">
                 <ItemsControl.ItemsPanel>
@@ -35,12 +71,6 @@
             </ItemsControl>
         </ScrollViewer>-->
         <!-- Botones -->
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-            <Button Content="Anterior" Margin="5" Command="{Binding AnteriorCommand}"/>
-            <Button Content="Siguiente" Margin="5" Command="{Binding SiguienteCommand}"/>
-        </StackPanel>
-    </Grid>
-
     <!--<DockPanel>
         <TextBlock Text="VMS  Ip: " FontSize="30" Foreground="White" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="5" FontFamily="Monocraft"><Run Text="{Binding IP,Mode=OneWay}"></Run></TextBlock>-->
         <!--<ItemsControl Margin="20" ItemsSource="{Binding Mensajes}">

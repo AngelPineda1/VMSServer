@@ -23,6 +23,12 @@ namespace VMSServer.Views
         public VMSView()
         {
             InitializeComponent();
+            // Cargar la fuente desde el archivo
+            var fontUri = new Uri("DS-DIGI.ttf", UriKind.Relative);
+            FontFamily font = new FontFamily(fontUri.ToString());
+
+            // Establecer la fuente para la ventana o para controles específicos
+            this.FontFamily = font;
         }
     }
 }
