@@ -10,10 +10,22 @@
         <TextBlock Text="{Binding MensajeVMS}" TextAlignment="Center" FontWeight="Bold" FontSize="12" Height="20" Foreground="White" ></TextBlock>
     </StackPanel>-->
     <Border BorderBrush="Gray" BorderThickness="1" Background="#1E1E1E">
-        <TextBlock Text="{Binding Mensaje}" Opacity="1" TextAlignment="Center" FontSize="30" Foreground="#FFA500" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="ds-digital">
+        <TextBlock Text="{Binding Mensaje}" Name="Texto" TextAlignment="Center" FontSize="30" Foreground="#FFA500" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="ds-digital">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="#FFA500" BlurRadius="10"/>
             </TextBlock.Effect>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Texto"
+                                     Storyboard.TargetProperty="(TextBlock.Opacity)"
+                                     From="1.0" To="0.0" Duration="0:0:2"
+                                     AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
         </TextBlock>
     </Border>
 </UserControl>
