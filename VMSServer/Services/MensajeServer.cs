@@ -47,14 +47,14 @@ namespace VMSServer.Services
                 var bufferpagina = Encoding.UTF8.GetBytes(pagina);
                 if (context.Request.Url != null)
                 {
-                    if (context.Request.Url.LocalPath == "/mensaje/")
+                    if (context.Request.Url.LocalPath == "/mensaje/" && context.Request.HttpMethod!="POST" )
                     {
                         context.Response.ContentLength64 = bufferpagina.Length;
                         context.Response.OutputStream.Write(bufferpagina, 0, bufferpagina.Length);
                         context.Response.StatusCode = 200;
                         context.Response.Close();
                     }
-                    else if (context.Request.HttpMethod == "POST" && context.Request.Url.LocalPath == "/mensaje/enviar")
+                    else if (context.Request.HttpMethod == "POST" && context.Request.Url.LocalPath == "/mensaje/")
                     {
                         byte[] bufferdata = new byte[context.Request.ContentLength64];
                         context.Request.InputStream.Read(bufferdata, 0, bufferdata.Length);
@@ -76,6 +76,8 @@ namespace VMSServer.Services
                             {
                                 MensajeRecicibido?.Invoke(this, mensaje);
                             }));
+                            context.Response.ContentLength64 = bufferpagina.Length;
+                            context.Response.OutputStream.Write(bufferpagina, 0, bufferpagina.Length);
                             context.Response.StatusCode = 200;
                             context.Response.Close();
 
