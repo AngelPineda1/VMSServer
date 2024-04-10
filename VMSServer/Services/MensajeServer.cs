@@ -68,7 +68,8 @@ namespace VMSServer.Services
                         {
                             Mensaje mensaje = new Mensaje()
                             {
-                                MensajeVMS = diccionario["mensaje"] ?? ""
+
+                                MensajeVMS = diccionario["mensaje"] ?? "",                               
                             };
 
                             GuardarMensaje(mensaje);

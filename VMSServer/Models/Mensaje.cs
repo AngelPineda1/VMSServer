@@ -9,5 +9,6 @@ namespace VMSServer.Models
     public class Mensaje
     {
         public string MensajeVMS { get; set; } = "";
+        public bool Opcion { get; set; }
     }
 }
