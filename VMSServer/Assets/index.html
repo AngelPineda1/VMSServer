@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mensajes VMS</title>
-    
+    <link rel="stylesheet" href="styles.css" />
     <style>
         body {
             background-color: black;
@@ -61,6 +61,16 @@
                 color: rgba(255, 255, 255, 0.5);
             }
 
+        label {
+            display: block;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
         input[type="submit"] {
             padding: 10px 20px;
             background-image: linear-gradient(to right, #ff7e5f, #feb47b);
@@ -82,10 +92,15 @@
 </head>
 <body>
     <h1>Mensajes VMS</h1>
-    <form id="messageForm" action="/mensaje/" method="POST">
+    <form id="messageForm" action="./enviar" method="POST">
         <textarea id="mensajeTextArea"
                   name="mensaje"
                   placeholder="Escribe tu mensaje"></textarea>
+        <br />
+        <label for="parpadeoCheckbox">
+            ¿Desea que el mensaje sea intermitente?
+            <input type="checkbox" id="parpadeoCheckbox" name="parpadeo" />
+        </label>
         <input type="submit" value="Enviar Mensaje" />
     </form>
 
