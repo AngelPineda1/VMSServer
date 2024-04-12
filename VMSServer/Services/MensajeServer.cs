@@ -69,9 +69,18 @@ namespace VMSServer.Services
                             Mensaje mensaje = new Mensaje()
                             {
 
-                                MensajeVMS = diccionario["mensaje"] ?? "",                               
+                                MensajeVMS = diccionario["mensaje"] ?? "", 
+                                
                             };
+                            if (diccionario["parpadeo"] == "on")
+                            {
+                                mensaje.Opcion = true;
+                            }
+                            else
+                            {
 
+                                mensaje.Opcion = false;
+                            }
                             GuardarMensaje(mensaje);
                             Application.Current.Dispatcher.Invoke(new Action(() =>
                             {

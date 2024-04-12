@@ -18,6 +18,7 @@ namespace VMSServer.ViewModels
     {
         public ObservableCollection<Mensaje> Mensajes { get; set; }=new ObservableCollection<Mensaje>();
         public string Mensaje {  get; set; }
+        public bool Parpadeo { get; set; }
         public int Indice { get; set; } 
         public MensajeServer server = new();
         public ICommand SiguienteCommand { get; set; }
@@ -41,6 +42,8 @@ namespace VMSServer.ViewModels
             if (Mensajes != null && Mensajes.Any())
             {
                 Mensaje = Mensajes.FirstOrDefault()?.MensajeVMS;
+                Parpadeo = Mensajes[Indice].Opcion;
+
             }
             else
             {
@@ -57,6 +60,10 @@ namespace VMSServer.ViewModels
             {
                 Mensaje = Mensajes[Indice].MensajeVMS;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+                Parpadeo = Mensajes[Indice].Opcion;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Parpadeo)));
+
+
 
             }
             else
@@ -64,6 +71,10 @@ namespace VMSServer.ViewModels
                 Indice = Mensajes.Count-1;
                 Mensaje = Mensajes[Indice].MensajeVMS;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+                Parpadeo = Mensajes[Indice].Opcion;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Parpadeo)));
+
+
             }
         }
 
@@ -74,12 +85,20 @@ namespace VMSServer.ViewModels
             {
                 Mensaje = Mensajes[Indice].MensajeVMS;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+                Parpadeo = Mensajes[Indice].Opcion;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Parpadeo)));
+
             }
             else
             {
                 Indice = 0;
                 Mensaje = Mensajes[Indice].MensajeVMS;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
+
+                Parpadeo = Mensajes[Indice].Opcion;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Parpadeo)));
+
+
             }
         }
 
@@ -91,7 +110,11 @@ namespace VMSServer.ViewModels
                 Mensaje = e.MensajeVMS;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mensaje)));
                 Indice = Mensajes.Count - 1;
+                Parpadeo = Mensajes[Indice].Opcion;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Parpadeo)));
+
             }
+
         }
         public event PropertyChangedEventHandler? PropertyChanged;
     }
