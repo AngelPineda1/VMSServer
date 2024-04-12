@@ -41,7 +41,7 @@ namespace VMSServer.ViewModels
             Mensajes = server.CargarArchivo();
             if (Mensajes != null && Mensajes.Any())
             {
-                Mensaje = Mensajes.FirstOrDefault()?.MensajeVMS;
+                Mensaje = Mensajes.LastOrDefault()?.MensajeVMS;
                 Parpadeo = Mensajes[Indice].Opcion;
 
             }
