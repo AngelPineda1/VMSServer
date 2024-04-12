@@ -18,7 +18,7 @@
                             <Storyboard>
                                 <DoubleAnimation
                   Storyboard.TargetProperty="Opacity"
-                  From="1.0" To="0.0" Duration="0:0:2"
+                  From="1.0" To="0.0" Duration="0:0:1"
                   AutoReverse="True" RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>
