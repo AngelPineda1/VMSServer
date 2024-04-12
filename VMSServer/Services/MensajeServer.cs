@@ -60,7 +60,7 @@ namespace VMSServer.Services
                         context.Request.InputStream.Read(bufferdata, 0, bufferdata.Length);
                         string datos = Encoding.UTF8.GetString(bufferdata);
                         var diccionario = HttpUtility.ParseQueryString(datos);
-                        if (diccionario["mensaje"].Length > 300)
+                        if (diccionario["mensaje"].Length > 200)
                         {
                             MessageBox.Show("El mensaje es muy largo");
                         }

@@ -30,7 +30,7 @@ namespace VMSServer.ViewModels
         {
             get
             {
-                return string.Join(' ', Dns.GetHostAddresses(Dns.GetHostName()).Where(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).Select(x => x.ToString()));
+                return string.Join(' ', Dns.GetHostAddresses(Dns.GetHostName()).Where(x => x.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork).Select(x => x.ToString()).FirstOrDefault());
             }
         }
         public MensajeViewModel()
@@ -42,6 +42,7 @@ namespace VMSServer.ViewModels
             if (Mensajes != null && Mensajes.Any())
             {
                 Mensaje = Mensajes.LastOrDefault()?.MensajeVMS;
+                Indice=Mensajes.Count()-1;
                 Parpadeo = Mensajes[Indice].Opcion;
 
             }

@@ -32,8 +32,8 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border BorderBrush="Gray" BorderThickness="1" Background="#1E1E1E">
-        <TextBlock Text="{Binding Mensaje}" Name="Texto" TextAlignment="Center" FontSize="30" Foreground="#FFA500" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="ds-digital">
+    <Border BorderBrush="Gray" BorderThickness="0" Background="#1E1E1E">
+        <TextBlock Text="{Binding Mensaje}" Name="Texto" TextAlignment="Center"  FontSize="80" Foreground="#FFA500" Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="ds-digital">
             <TextBlock.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="#FFA500" BlurRadius="10"/>
             </TextBlock.Effect>
